@@ -1,5 +1,4 @@
 import React from "react";
-import "./../styles/Button.css"
 
 
 function _addNonExistentProperties(target, src) {
@@ -11,8 +10,7 @@ function _addNonExistentProperties(target, src) {
   })
 }
 
-
-const Button = ({title, ...props}) => {
+const Button = ({children, ...props}) => {
   const buttonStyle = {
     backgroundColor: "#dc3545",
     color: "white",
@@ -24,13 +22,14 @@ const Button = ({title, ...props}) => {
   }
 
   if (props.hasOwnProperty("style")) {
-    _addNonExistentProperties(buttonStyle, props.style)
+    _addNonExistentProperties(buttonStyle, props["style"])
+    delete props["style"]
   }
 
   return (
-    <div>
-      <button style={buttonStyle}>{title}</button>
-    </div>
+      <button {...props} style={buttonStyle}>
+        {children}
+      </button>
   )
 }
 
