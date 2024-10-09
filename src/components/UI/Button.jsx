@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import styled from "styled-components";
 
 
 function _addNonExistentProperties(target, src) {
@@ -11,11 +12,13 @@ function _addNonExistentProperties(target, src) {
 }
 
 const Button = ({children, ...props}) => {
+  const [hover, setHover] = useState(false);
+
   const buttonStyle = {
-    backgroundColor: "#dc3545",
+    backgroundColor: hover ? "#9c2430": "#dc3545",
     color: "white",
     border: "none",
-    fontSize: "15px",
+    fontSize: "10px",
     padding: "8px 10px",
     borderRadius: "3px",
     textAlign: "center"
@@ -27,7 +30,12 @@ const Button = ({children, ...props}) => {
   }
 
   return (
-      <button {...props} style={buttonStyle}>
+      <button 
+        style={buttonStyle}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        {...props}
+      >
         {children}
       </button>
   )

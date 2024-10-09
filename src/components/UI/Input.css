@@ -1,12 +1,13 @@
-#Input[type=text] {
-    width: 26%;
+.basic-input {
+    width: 15%;
     line-height: 25px;
     margin: 8px 0;
+    margin-right: 10%;
     border-radius: 4px;
     box-sizing: border-box;
     border: 2px solid #ccc;
 }
 
-#Input[type=text]:focus {
+.basic-input:focus {
     outline: none;
 }
